@@ -4,11 +4,14 @@ var SetCollection = require('./set-collection');
 
 module.exports = AmpersandState.extend({
     props: {
-        id: 'number',
-        artistid: 'number',
-        title: 'string'
+        _i: 'number',
+        _a: 'number',
+        _t: 'string'
     },
     derived: {
+        id: { deps: ['_i'], cache: true, fn: function() { return this._i } },
+        artistid: { deps: ['_a'], cache: true, fn: function() { return this._a } },
+        title: { deps: ['_t'], cache: true, fn: function() { return this._t } },
         viewUrl: {
             deps: ['id'],
             cache: true,

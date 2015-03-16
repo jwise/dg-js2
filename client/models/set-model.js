@@ -4,11 +4,14 @@ var PlayModel = require('./play-model');
 
 module.exports = AmpersandState.extend({
     props: {
-        id: 'number',
-        date: 'string',
-        plays: 'array'
+        _i: 'number',
+        _d: 'string',
+        _p: 'array'
     },
     derived: {
+        id: { deps: ['_i'], cache: true, fn: function() { return this._i } },
+        date: { deps: ['_d'], cache: true, fn: function() { return this._d } },
+        plays: { deps: ['_p'], cache: true, fn: function() { return this._p.map(function (p) { return { songid: p._s, request: p._r }; }) } },
         viewUrl: {
             deps: ['id'],
             cache: true,

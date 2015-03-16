@@ -5,6 +5,7 @@ var SongCollection = require('./song-collection');
 
 module.exports = AmpersandModel.extend({
     props: {
+        version: 'number'
     },
     collections: {
         artists: ArtistCollection,

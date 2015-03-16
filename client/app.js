@@ -35,6 +35,10 @@ module.exports = {
             self.world.fetch({
                 success: function () {
                     // *NOW* we can kick off the router.
+                    if (self.world.version != 2) {
+                        mainView.handleNewPage(new ErrorPage({err: "database has incorrect version"}));
+                        return;
+                    }
                     self.router.history.start({pushState: true, forceHash: true, root: '/'});
                 },
                 error: function (m, xhr) {

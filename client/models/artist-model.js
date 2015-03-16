@@ -4,10 +4,14 @@ var SongCollection = require('./song-collection');
 
 module.exports = AmpersandState.extend({
     props: {
-        id: 'number',
-        artist: 'string'
+        _i: 'number',
+        _a: 'string',
+        _p: 'number'
     },
     derived: {
+        id: { deps: ['_i'], cache: true, fn: function() { return this._i } },
+        artist: { deps: ['_a'], cache: true, fn: function() { return this._a } },
+        playCount: { deps: ['_p'], cache: true, fn: function() { return this._p } },
         viewUrl: {
             deps: ['id'],
             cache: true,
@@ -26,13 +30,14 @@ module.exports = AmpersandState.extend({
                     })
                 );
             }
-        },
+        }/*,
         playCount: {
             deps: ['songs'],
             cache: true,
             fn: function () {
                 return this.songs.reduce(function (a, song) { return a + song.plays.length; }, 0);
             }
-        }
+        }*/
+        
     }
 });
