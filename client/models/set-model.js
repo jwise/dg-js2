@@ -11,7 +11,7 @@ module.exports = AmpersandState.extend({
     derived: {
         id: { deps: ['_i'], cache: true, fn: function() { return this._i } },
         date: { deps: ['_d'], cache: true, fn: function() { return this._d } },
-        plays: { deps: ['_p'], cache: true, fn: function() { return this._p.map(function (p) { return { songid: p._s, request: p._r }; }) } },
+        plays: { deps: ['_p'], cache: true, fn: function() { return this._p.map(function (p) { return { songid: p[0], request: p[1] }; }) } },
         viewUrl: {
             deps: ['id'],
             cache: true,
