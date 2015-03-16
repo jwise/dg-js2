@@ -32,7 +32,7 @@ module.exports = PageView.extend({
         this.curpage = 1 * (spec.curpage || 1);
         var re = new RegExp(this.query_val, 'i');
         this.results = new SongCollection(app.world.songs.filter(function (song) { return song.title.match(re); })); 
-        this.results.comparator = function (song) { return -song.plays.length; };
+        this.results.comparator = function (song) { return -song.playCount; };
         this.results.sort();
     },
     subviews: {

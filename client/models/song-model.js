@@ -6,7 +6,8 @@ module.exports = AmpersandState.extend({
     props: {
         _i: 'number',
         _a: 'number',
-        _t: 'string'
+        _t: 'string',
+        _p: 'array'
     },
     derived: {
         id: { deps: ['_i'], cache: true, fn: function() { return this._i } },
@@ -27,16 +28,19 @@ module.exports = AmpersandState.extend({
             }
         },
         plays: {
-            deps: ['id'],
+            deps: ['_p'],
             cache: true,
             fn: function () {
                 var self = this;
                 return new SetCollection(
-                    app.world.sets.filter(function (set) {
-                        return set.plays.some(function (play) { return play.songid == self.id; });
-                    })
+                    this._p.map(function (p) { return app.world.sets.get(p); })
                 );
             }
+        },
+        playCount: {
+            deps: ['_p'],
+            cache: true,
+            fn: function() { return this._p.length; }
         }
     }
 });
