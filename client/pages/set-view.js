@@ -7,7 +7,8 @@ module.exports = PageView.extend({
     pageTitle: 'set view',
     template: templates.pages.setView.page,
     bindings: {
-        'model.date': '[data-hook~=date]'
+        'model.date': '[data-hook~=date]',
+        'model.club': '[data-hook~=club]',
     },
     render: function() {
         this.renderWithTemplate();

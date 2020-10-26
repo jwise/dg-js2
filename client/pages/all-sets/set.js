@@ -5,6 +5,7 @@ module.exports = View.extend({
     template: templates.pages.allSets.set,
     bindings: {
         'model.date': '[data-hook~=date]',
+        'model.club': '[data-hook~=club]',
         'model.playCount': '[data-hook~=plays]',
         'model.viewUrl': {
             type: 'attribute',

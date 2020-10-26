@@ -6,11 +6,13 @@ module.exports = AmpersandState.extend({
     props: {
         _i: 'number',
         _d: 'string',
-        _p: 'array'
+        _p: 'array',
+        _c: 'club'
     },
     derived: {
         id: { deps: ['_i'], cache: true, fn: function() { return this._i } },
         date: { deps: ['_d'], cache: true, fn: function() { return this._d } },
+        club: { deps: ['_c'], cache: true, fn: function() { return this._c } },
         plays: { deps: ['_p'], cache: true, fn: function() { return this._p.map(function (p) { return { songid: p[0], request: p[1] }; }) } },
         viewUrl: {
             deps: ['id'],
